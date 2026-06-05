@@ -5,7 +5,7 @@ Diese Struktur legt den Fokus auf **Wartbarkeit**, **Skalierbarkeit** und **klar
 ## Übersicht
 
 ```
-cacbratzen_website/
+smug_website/
 ├── public/                    # Statische Assets (unverändert im Build)
 │   ├── favicon.svg
 │   ├── favicon.ico

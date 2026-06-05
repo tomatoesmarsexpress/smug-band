@@ -12,7 +12,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* ✅ Wichtig: Scroll nicht blockieren */
 html {
   height: 100%;
 }
@@ -48,7 +47,6 @@ body {
   mix-blend-mode: multiply;
 }
 
-/* Rough Box Style */
 .rough-box {
   border: 4px solid #0f0f0f;
   box-shadow:
@@ -58,7 +56,6 @@ body {
   background-color: #dacbb3;
 }
 
-/* Page Fade Animation */
 .page-fade-in {
   animation: page-fade-in 180ms ease-out both;
 }

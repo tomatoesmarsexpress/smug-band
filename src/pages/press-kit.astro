@@ -5,7 +5,7 @@ import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 
 // 2. Alle Bilder explizit importieren
-import logoImg from '../assets/images/caclogo.png';
+import logoImg from '../assets/images/smuglogo.webp';
 import fynnImg from '../assets/images/fynnimage.png';
 import xbarImg from '../assets/images/xbarbild.png';
 import jakeImg from '../assets/images/jakesax.png';
@@ -19,9 +19,9 @@ const epkPhotos = [
 ];
 
 const musicVideos = [
-  { src: "https://www.youtube.com/embed/uPR02K2Q7Us", title: "Curves" },
-  { src: "https://www.youtube.com/embed/E9c_FGkbVc0", title: "KTP" },
-  { src: "https://www.youtube.com/embed/asJbd2Nx6Nk", title: "Winter Demo" },
+  { src: "https://www.youtube-nocookie.com/embed/uPR02K2Q7Us", title: "Curves" },
+  { src: "https://www.youtube-nocookie.com/embed/E9c_FGkbVc0", title: "KTP" },
+  { src: "https://www.youtube-nocookie.com/embed/asJbd2Nx6Nk", title: "Winter Demo" },
 ];
 ---
 
@@ -50,15 +50,16 @@ const musicVideos = [
     <section class="space-y-8">
 
       <div class="rounded-lg border-2 border-black/80 bg-white/60 p-5 shadow-sm">
-        <h2 class="text-2xl font-black uppercase tracking-[0.06em] sm:text-3xl">Über Uns</h2>
+        <h2 class="text-2xl font-black uppercase tracking-[0.06em] sm:text-3xl">about</h2>
         <p class="mt-3 text-sm leading-relaxed sm:text-base">
-          Wir sind die cacbratzen, eine Mischung aus Punk, Blues und vielem mehr.
-          Gegründet 2023, haben wir schnell einen einzigartigen Sound entwickelt...
+          Wir sind Smug (ehemals cacbratzen), eine energetische Punk-Band mit Blues-Einflüssen. Seit 2023 mischen wir mit unserem eigenen Sound die Münchner Musikszene auf. Gespielt haben wir schon über 20 Shows, unter anderem auch im Strom. Ob kleine Bar im Keller oder große Stage, mit unseren Songs fetzen wir jede Location.
+          <br><br>
+          "Ich glaub ehrlich das war das beste Konzert auf dem ich war..." - Konzertbesucher von Smug, 2025 
         </p>
       </div>
 
       <div class="rounded-lg border-2 border-black/80 bg-white/60 p-5">
-        <h2 class="text-2xl font-black uppercase tracking-[0.06em] sm:text-3xl">Pics</h2>
+        <h2 class="text-2xl font-black uppercase tracking-[0.06em] sm:text-3xl">Pics</h2> 
         <div class="relative mt-4">
 
           <button type="button" id="scrollLeft" class="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full border-2 border-black/80 bg-white/80 px-3 py-2 text-black shadow-sm hover:bg-white">←</button>
@@ -103,46 +104,32 @@ const musicVideos = [
       </div>
 
       <div class="rounded-lg border-2 border-black/80 bg-white/60 p-5">
+        <h2 class="text-2xl font-black uppercase tracking-[0.06em] sm:text-3xl">Spotify</h2>
+        <div class="mt-4">
+          <iframe
+            class="w-full rounded-xl"
+            style="border-radius:12px"
+            src="https://open.spotify.com/embed/track/1KfxliYQULuMnVV2WCnuzn?utm_source=generator"
+            height="352"
+            frameBorder="0"
+            allowfullscreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="rounded-lg border-2 border-black/80 bg-white/60 p-5">
         <h2 class="text-2xl font-black uppercase tracking-[0.06em] sm:text-3xl">Kontakt</h2>
-        <form id="contactForm" class="mt-4 space-y-4">
-          <div>
-            <label for="name" class="block text-sm font-semibold">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              class="mt-1 w-full rounded-lg border-2 border-black/20 bg-white/80 px-3 py-2 text-sm focus:border-black/80 focus:outline-none"
-            />
-          </div>
-          <div>
-            <label for="email" class="block text-sm font-semibold">E-Mail</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              class="mt-1 w-full rounded-lg border-2 border-black/20 bg-white/80 px-3 py-2 text-sm focus:border-black/80 focus:outline-none"
-            />
-          </div>
-          <div>
-            <label for="message" class="block text-sm font-semibold">Nachricht</label>
-            <textarea
-              id="message"
-              name="message"
-              rows={5}
-              required
-              class="mt-1 w-full rounded-lg border-2 border-black/20 bg-white/80 px-3 py-2 text-sm focus:border-black/80 focus:outline-none"
-            ></textarea>
-          </div>
-          <button
-            type="submit"
-            id="submitBtn"
-            class="rounded-lg border-2 border-black/80 bg-black text-white px-6 py-2 font-semibold uppercase hover:bg-black/90 transition-colors"
-          >
-            Nachricht senden
-          </button>
-        </form>
+        <p class="mt-3 text-sm leading-relaxed sm:text-base">
+          Schreib uns gerne eine E-Mail:
+        </p>
+        <a
+          href="mailto:smug.kontakt@gmail.com"
+          class="mt-4 inline-block rounded-lg border-2 border-black/80 bg-black px-6 py-2 font-semibold lowercase text-white transition-colors hover:bg-black/90"
+        >
+          smug.kontakt@gmail.com
+        </a>
       </div>
 
     </section>

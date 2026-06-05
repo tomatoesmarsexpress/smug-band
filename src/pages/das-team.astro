@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import teamImg from '../assets/images/team.png';
+import fynnCariImg from '../assets/images/fynn_cari.png';
 ---
 
 <Layout>
@@ -14,6 +15,17 @@ import teamImg from '../assets/images/team.png';
 			loading="lazy"
 			decoding="async"
 		/>
+
+		<img
+			src={fynnCariImg.src}
+			width={fynnCariImg.width}
+			height={fynnCariImg.height}
+			alt="Fynn & Cari"
+			class="mt-6 w-full max-w-[20rem] sm:max-w-[28rem] md:max-w-3xl rounded-lg"
+			loading="lazy"
+			decoding="async"
+		/>
+
 		<p class="mt-2 text-slate-700 text-center">Erfahre mehr über uns auf insta :D</p>
 	</main>
 </Layout>

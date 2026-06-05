@@ -1,10 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import showsImg from '../assets/images/shows.png';
+import plakatImg from '../assets/images/smug-plakat.webp';
 ---
 
 <Layout>
 	<main class="min-h-screen flex flex-col items-center px-6 pt-24 pb-16">
+
 		<img
 			src={showsImg.src}
 			width={showsImg.width}
@@ -14,6 +16,14 @@ import showsImg from '../assets/images/shows.png';
 			loading="lazy"
 			decoding="async"
 		/>
-		<p class="mt-2 text-slate-700 text-center">Seid gespannt!!</p>
+		<img
+			src={plakatImg.src}
+			width={plakatImg.width}
+			height={plakatImg.height}
+			alt="SMUG Plakat"
+			class="w-full max-w-2xl mt-4"
+			loading="lazy"
+			decoding="async"
+		/>
 	</main>
 </Layout>
