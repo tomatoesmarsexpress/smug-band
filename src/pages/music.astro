@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro';
+import musicImg from '../assets/images/music-image.png';
+import deluxeCover from '../assets/images/delux-version-cover.jpg';
+import ktpThumb from '../assets/images/ktp_frame.png';
+import curvesThumb from '../assets/images/curves_demo_frame.png';
+import winterThumb from '../assets/images/winter_demo_frame.png';
+
+const releases = [
+  {
+    title: "Deluxe Version",
+    type: "EP",
+    cover: deluxeCover,
+    href: "https://smugmusik.bandcamp.com/",
+  },
+];
+
+const videos = [
+  {
+    title: "KTP",
+    thumb: ktpThumb,
+    embed: "https://www.youtube-nocookie.com/embed/E9c_FGkbVc0",
+  },
+  {
+    title: "Curves Demo",
+    thumb: curvesThumb,
+    embed: "https://www.youtube-nocookie.com/embed/uPR02K2Q7Us",
+  },
+  {
+    title: "Winter Demo",
+    thumb: winterThumb,
+    embed: "https://www.youtube-nocookie.com/embed/asJbd2Nx6Nk",
+  },
+];
+---
+
+<Layout title="Music | SMUG">
+	<main class="mx-auto flex w-full max-w-5xl flex-col items-center px-4 pb-16 pt-24 sm:px-8">
+
+		<img
+			src={musicImg.src}
+			width={musicImg.width}
+			height={musicImg.height}
+			alt="Music"
+			class="mb-10 w-full max-w-[15rem] object-contain md:max-w-[19rem]"
+			loading="lazy"
+			decoding="async"
+		/>
+
+		<section class="w-full">
+			<h2 class="text-center text-xl font-black uppercase tracking-[0.12em] sm:text-2xl">
+				EP
+			</h2>
+
+			<ul class="mt-6 flex flex-wrap justify-center gap-6 sm:gap-8">
+				{releases.map((release) => (
+					<li class="w-[min(100%,14rem)]">
+						<a
+							href={release.href}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="group block transition-transform duration-200 hover:-translate-y-1"
+						>
+							<div class="overflow-hidden rounded-md border-2 border-black/80 bg-black/5 shadow-sm">
+								<img
+									src={release.cover.src}
+									width={release.cover.width}
+									height={release.cover.height}
+									alt={`${release.title} Cover`}
+									class="aspect-square w-full object-cover transition-opacity group-hover:opacity-90"
+									loading="lazy"
+									decoding="async"
+								/>
+							</div>
+							<p class="mt-3 text-center text-sm font-black uppercase tracking-[0.08em]">
+								{release.title}
+							</p>
+							<p class="mt-0.5 text-center text-xs font-semibold uppercase tracking-[0.14em] text-black/55">
+								{release.type}
+							</p>
+						</a>
+					</li>
+				))}
+			</ul>
+		</section>
+
+		<section class="mt-14 w-full sm:mt-16">
+			<h2 class="text-center text-xl font-black uppercase tracking-[0.12em] sm:text-2xl">
+				Videos &amp; Demos
+			</h2>
+
+			<div class="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-4">
+				{videos.map((video) => (
+					<details class="group">
+						<summary class="list-none cursor-pointer">
+							<div class="overflow-hidden transition-transform duration-200 group-open:hidden hover:-translate-y-0.5">
+								<img
+									src={video.thumb.src}
+									width={video.thumb.width}
+									height={video.thumb.height}
+									alt={`${video.title} – Thumbnail`}
+									class="w-full object-contain"
+									loading="lazy"
+									decoding="async"
+								/>
+							</div>
+							<p class="mt-2 text-center text-sm font-semibold group-open:mb-3">
+								{video.title}
+							</p>
+						</summary>
+						<div class="relative w-full overflow-hidden rounded-md border-2 border-black/80 pt-[56.25%]">
+							<iframe
+								src={video.embed}
+								title={video.title}
+								class="absolute inset-0 h-full w-full"
+								loading="lazy"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								allowfullscreen
+							></iframe>
+						</div>
+					</details>
+				))}
+			</div>
+		</section>
+	</main>
+</Layout>

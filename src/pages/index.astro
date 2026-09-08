@@ -1,16 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import logo from '../assets/images/smuglogo.webp';
-import videosImg from '../assets/images/videos.png';
+import musicImg from '../assets/images/music-image.png';
 import showsImg from '../assets/images/shows.png';
-import teamImg from '../assets/images/team.png';
+import merchImg from '../assets/images/team2.webp';
 import flyImg from '../assets/images/fly.png';
 import characterImg from '../assets/images/character.png';
 
 const sections = [
-  { href: "/videos", img: videosImg, alt: "Videos" },
-  { href: "/shows", img: showsImg, alt: "Shows" },
-  { href: "/das-team", img: teamImg, alt: "Das Team" },
+  { href: "/music", img: musicImg, alt: "Music", external: false, scale: 0.88 },
+  { href: "/shows", img: showsImg, alt: "Shows", external: false },
+  {
+    href: "https://smugmusik.bandcamp.com/merch",
+    img: merchImg,
+    alt: "Merch",
+    external: true,
+    scale: 1.21,
+  },
 ];
 ---
 
@@ -28,20 +34,25 @@ const sections = [
         class="max-w-full sm:max-w-2xl object-contain" />
     </section>
 
-    <section class="grid grid-cols-1 place-items-center gap-5 md:grid-cols-3">
+    <section class="grid grid-cols-1 place-items-center gap-2 md:grid-cols-3 md:gap-5">
       {sections.map((section) => {
+        const scale = section.scale ?? 1;
         return (
-          <a href={section.href}
-            class="inline-block transition-transform duration-200 hover:-translate-y-1">
-
-            <div class="aspect-square flex items-center justify-center">
+          <a
+            href={section.href}
+            class="inline-block transition-transform duration-200 hover:-translate-y-1"
+            {...(section.external
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
+          >
+            <div class="flex items-center justify-center md:aspect-square">
               <img
                 src={section.img.src}
                 alt={section.alt}
                 class="max-w-full object-contain"
+                style={scale !== 1 ? `transform: scale(${scale})` : undefined}
               />
             </div>
-
           </a>
         );
       })}

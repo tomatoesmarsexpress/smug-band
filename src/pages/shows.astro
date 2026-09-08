@@ -1,29 +1,85 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import showsImg from '../assets/images/shows.png';
-import plakatImg from '../assets/images/smug-plakat.webp';
+
+// Bandsintown artist: use exact page name, or preferably "id_XXXXX" from
+// https://www.bandsintown.com/a/XXXXX
+const BANDSINTOWN_ARTIST = "SMUG";
+const BANDSINTOWN_URL = `https://www.bandsintown.com/a/${BANDSINTOWN_ARTIST.replace(/^id_/i, "")}`;
 ---
 
-<Layout>
-	<main class="min-h-screen flex flex-col items-center px-6 pt-24 pb-16">
+<Layout title="Shows | SMUG">
+	<main class="mx-auto flex w-full max-w-4xl flex-col items-center px-4 pb-16 pt-24 sm:px-8">
 
 		<img
 			src={showsImg.src}
 			width={showsImg.width}
 			height={showsImg.height}
 			alt="Shows"
-			class="w-full max-w-[11rem] md:max-w-[14rem] mb-4"
+			class="mb-8 w-full max-w-[11rem] md:max-w-[14rem]"
 			loading="lazy"
 			decoding="async"
 		/>
-		<img
-			src={plakatImg.src}
-			width={plakatImg.width}
-			height={plakatImg.height}
-			alt="SMUG Plakat"
-			class="w-full max-w-2xl mt-4"
-			loading="lazy"
-			decoding="async"
-		/>
+
+		<section class="w-full rounded-lg border-2 border-black/80 bg-white/60 p-5 shadow-sm sm:p-7">
+			<div class="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+				<div>
+					<h2 class="text-2xl font-black uppercase tracking-[0.06em] sm:text-3xl">
+						Nächsten Shows:
+					</h2>
+					<p class="mt-1 text-sm text-black/70 sm:text-base">
+						Termine von Bandsintown, neusten Infos gibts auf unserem Insta.
+					</p>
+				</div>
+				<a
+					href={BANDSINTOWN_URL}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="inline-flex w-fit items-center gap-2 rounded-lg border-2 border-black/80 bg-black px-4 py-2 text-sm font-semibold lowercase text-white transition-colors hover:bg-black/90"
+				>
+					Bandsintown folgen
+				</a>
+			</div>
+
+			<div class="bit-widget-shell overflow-hidden rounded-md border border-black/15 bg-[#efe8d6]/40 p-2 sm:p-4">
+				<a
+					class="bit-widget-initializer"
+					data-artist-name={BANDSINTOWN_ARTIST}
+					data-display-local-dates="false"
+					data-display-past-dates="false"
+					data-auto-style="false"
+					data-text-color="#111111"
+					data-link-color="#111111"
+					data-background-color="rgba(0,0,0,0)"
+					data-display-limit="15"
+					data-display-start-time="true"
+					data-link-text-color="#FFFFFF"
+					data-display-lineup="false"
+					data-display-play-my-city="true"
+					data-separator-color="rgba(17,17,17,0.18)"
+					data-widget-width="100%"
+					data-font="Helvetica"
+					data-language="de"
+					data-display-track-button="false"
+					data-display-listen-icon="false"
+				></a>
+			</div>
+		</section>
 	</main>
 </Layout>
+
+<script is:inline charset="utf-8" src="https://widgetv3.bandsintown.com/main.min.js"></script>
+
+<style is:global>
+	.bit-widget-shell .bit-widget {
+		font-family: inherit !important;
+	}
+
+	.bit-widget-shell a {
+		transition: opacity 0.15s ease;
+	}
+
+	.bit-widget-shell a:hover {
+		opacity: 0.75;
+	}
+</style>

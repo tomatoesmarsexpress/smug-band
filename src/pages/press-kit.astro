@@ -9,20 +9,30 @@ import logoImg from '../assets/images/smuglogo.webp';
 import fynnImg from '../assets/images/fynnimage.png';
 import xbarImg from '../assets/images/xbarbild.png';
 import jakeImg from '../assets/images/jakesax.png';
-import gruppenImg from '../assets/images/gruppenbild.png';
+import jakeImBild from '../assets/images/jakeimbild.jpg';
+import deluxeCover from '../assets/images/delux-version-cover.jpg';
+import stageplanPdf from '../assets/pdf/Stageplan_SMUG.pdf';
 
 const epkPhotos = [
-  { src: fynnImg, alt: "EPK Foto 1" },
-  { src: xbarImg, alt: "EPK Foto 2" },
-  { src: jakeImg, alt: "EPK Foto 3" },
-  { src: gruppenImg, alt: "EPK Foto 4" },
+  { src: jakeImBild, alt: "EPK Foto 1" },
+  { src: fynnImg, alt: "EPK Foto 2" },
+  { src: xbarImg, alt: "EPK Foto 3" },
+  { src: jakeImg, alt: "EPK Foto 4" },
 ];
 
-const musicVideos = [
-  { src: "https://www.youtube-nocookie.com/embed/uPR02K2Q7Us", title: "Curves" },
-  { src: "https://www.youtube-nocookie.com/embed/E9c_FGkbVc0", title: "KTP" },
-  { src: "https://www.youtube-nocookie.com/embed/asJbd2Nx6Nk", title: "Winter Demo" },
+const onStageVideos = [
+  {
+    src: "https://www.youtube-nocookie.com/embed/mvfBE63oKJ0",
+    title: "(I dont wanna pay my) Taxes — Live",
+  },
 ];
+
+const LATEST_RELEASE = {
+  title: "Deluxe Version",
+  type: "EP",
+  href: "https://smugmusik.bandcamp.com/album/deluxe-version",
+  cover: deluxeCover,
+};
 ---
 
 <Layout>
@@ -53,7 +63,29 @@ const musicVideos = [
         <h2 class="text-2xl font-black uppercase tracking-[0.06em] sm:text-3xl">about</h2>
         <p class="mt-3 text-sm leading-relaxed sm:text-base">
           Die 2023 gegründete Alt-Punk Band SMUG (fka CAC) macht in Münchens Underground schon seit Jahren große Wellen. Die schwer fassbare Gruppe hat mit ihren über 20 Shows rund um München einen Ruf aufgebaut von chaotischen Persönlichkeiten, experimentellen Sound, und einen radikalen Ansatz zu Musik und Performance.
+          <br><br>
+          Mit ihrer Single „BWLER“ erreichten sie auf Instagram über eine Million Aufrufe und schafften es, ihre Fangemeinschaft weit über München hinaus zu verbreiten. Mit ihrer langersehnten EP „Deluxe Version“ verfestigt SMUG ihren einzigartigen Klang und schafft es beim nächsten Release ganz sicher auch in die Charts.
         </p>
+      </div>
+
+      <div class="rounded-lg border-2 border-black/80 bg-white/60 p-5">
+        <h2 class="text-2xl font-black uppercase tracking-[0.06em] sm:text-3xl">On Stage Videos</h2>
+        <div class="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2">
+          {onStageVideos.map((v) => (
+            <div class="w-full md:col-span-2 md:max-w-3xl md:mx-auto">
+              <div class="relative w-full pt-[56.25%]">
+                <iframe
+                  class="absolute inset-0 h-full w-full rounded-lg"
+                  src={v.src}
+                  title={v.title}
+                  loading="lazy"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <p class="mt-2 text-center text-sm font-semibold">{v.title}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div class="rounded-lg border-2 border-black/80 bg-white/60 p-5">
@@ -82,23 +114,26 @@ const musicVideos = [
       </div>
 
       <div class="rounded-lg border-2 border-black/80 bg-white/60 p-5">
-        <h2 class="text-2xl font-black uppercase tracking-[0.06em] sm:text-3xl">Musik Videos</h2>
-        <div class="mt-4 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {musicVideos.map((v) => (
-            <div class="w-full">
-              <div class="relative w-full pt-[56.25%]">
-                <iframe
-                  class="absolute inset-0 h-full w-full rounded-lg"
-                  src={v.src}
-                  title={v.title}
-                  loading="lazy"
-                  allowfullscreen
-                ></iframe>
-              </div>
-              <p class="mt-2 text-center text-sm font-semibold">{v.title}</p>
-            </div>
-          ))}
-        </div>
+        <h2 class="text-2xl font-black uppercase tracking-[0.06em] sm:text-3xl">Neuste Release</h2>
+        <a
+          href={LATEST_RELEASE.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-4 flex max-w-md items-center gap-4 rounded-lg border-2 border-black/80 bg-white/70 p-3 transition-transform duration-200 hover:-translate-y-0.5"
+        >
+          <Image
+            src={LATEST_RELEASE.cover}
+            alt={`${LATEST_RELEASE.title} Cover`}
+            class="h-28 w-28 shrink-0 rounded-md object-cover sm:h-32 sm:w-32"
+          />
+          <div>
+            <p class="text-lg font-black uppercase tracking-[0.06em]">{LATEST_RELEASE.title}</p>
+            <p class="mt-1 text-sm font-semibold uppercase tracking-[0.12em] text-black/55">{LATEST_RELEASE.type}</p>
+            <p class="mt-3 text-sm font-semibold underline decoration-2 underline-offset-4">
+              Auf Bandcamp anhören →
+            </p>
+          </div>
+        </a>
       </div>
 
       <div class="rounded-lg border-2 border-black/80 bg-white/60 p-5">
@@ -115,6 +150,22 @@ const musicVideos = [
             loading="lazy"
           ></iframe>
         </div>
+      </div>
+
+      <div class="rounded-lg border-2 border-black/80 bg-white/60 p-5">
+        <h2 class="text-2xl font-black uppercase tracking-[0.06em] sm:text-3xl">Stageplan</h2>
+        <p class="mt-3 text-sm leading-relaxed sm:text-base">
+          Für Booker*innen: unser aktueller Stageplan als PDF zum Download.
+        </p>
+        <a
+          href={stageplanPdf}
+          download="Stageplan_SMUG.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-4 inline-flex items-center gap-2 rounded-lg border-2 border-black/80 bg-black px-6 py-2 font-semibold lowercase text-white transition-colors hover:bg-black/90"
+        >
+          Stageplan herunterladen 
+        </a>
       </div>
 
       <div class="rounded-lg border-2 border-black/80 bg-white/60 p-5">
